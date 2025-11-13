@@ -1,0 +1,12 @@
+[tools]
+"cargo:stellar-cli" = "23.1.4"
+
+[env]
+STELLAR_NETWORK = "testnet"
+STELLAR_SOURCE = "blend-test-net"
+WASM = "target/wasm32-unknown-unknown/optimized/oracle_aggregator.wasm"
+ADMIN = "GBH62ESUWAJGVIDWMQTIJ4T24IWIGMYM2LGGVCBZGAZY7EYHDYMMA7HX"
+BASE = '{"Other":"USD"}'
+DECIMALS = 14
+MAX_AGE = 600
+ORACLE_TESTNET_ID = "CCNAFGAGXRP4RURGW6ISNTT2H7EA5HMNC6VKFHPL3Q2ALEADEMPMPZZ3"
