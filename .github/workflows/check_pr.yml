@@ -1,0 +1,45 @@
+name: "Check PR"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  Check_Build:
+    name: "Check Build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config libudev-dev
+      - name: Install mise
+        uses: jdx/mise-action@v2
+      - name: Cache Dependencies
+        uses: Swatinem/rust-cache@v2.7.3
+      - name: "Install WASM Target"
+        run: rustup target add wasm32-unknown-unknown
+      - name: "Build Contract (Optimized)"
+        run: make build
+
+  Check_Tests:
+    name: "Run Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config libudev-dev
+      - name: Install mise
+        uses: jdx/mise-action@v2
+      - name: Cache Dependencies
+        uses: Swatinem/rust-cache@v2.7.3
+      - name: "Install WASM Target"
+        run: rustup target add wasm32-unknown-unknown
+      - name: "Run All Tests"
+        run: make test
