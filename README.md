@@ -58,3 +58,31 @@ The aggregator attempts to fetch the price from the source oracle as defined by 
 Oracle Aggregator has not had an audit conducted. If an audit is conducted, it will appear here.
 
 Oracle Aggregator is made available under the MIT License, which disclaims all warranties in relation to the project and which limits the liability of those that contribute and maintain the project, including Script3. You acknowledge that you are solely responsible for any use of Oracle Aggregator and you assume all risks associated with any such use.
+
+## Deployment
+
+mise configuration for testnet
+
+```
+STELLAR_NETWORK = "testnet"
+STELLAR_SOURCE = "blend-test-net"
+WASM = "target/wasm32-unknown-unknown/optimized/oracle_aggregator.wasm"
+ADMIN = "GBH62ESUWAJGVIDWMQTIJ4T24IWIGMYM2LGGVCBZGAZY7EYHDYMMA7HX"
+BASE = '{"Other":"USD"}'
+DECIMALS = 14
+MAX_AGE = 600
+ORACLE_ID = "CCNAFGAGXRP4RURGW6ISNTT2H7EA5HMNC6VKFHPL3Q2ALEADEMPMPZZ3"
+```
+
+mainnet
+
+```
+STELLAR_NETWORK = "mainnet"
+STELLAR_SOURCE = "blend-mainnet"
+WASM = "target/wasm32-unknown-unknown/optimized/oracle_aggregator.wasm"
+ADMIN = "GDH3FRHOOWXYXEASH43N2VOVFOPJSVJF3EQFSLBLJYFPHOUAF4N4AETH"
+BASE = '{"Other":"USD"}'
+DECIMALS = 14
+MAX_AGE = 600
+ORACLE_ID = "CCCG2Q67D245Q74D2IJXOLEBJVV4Z26C727G4SSMBSGDJRMQVHJK7XIZ"
+```

@@ -10,6 +10,6 @@ build:
 		--wasm target/wasm32-unknown-unknown/release/oracle_aggregator.wasm \
 		--wasm-out target/wasm32-unknown-unknown/optimized/oracle_aggregator.wasm
 
-deploy-testnet: build
-	stellar contract deploy --network $$STELLAR_NETWORK --source $$STELLAR_SOURCE --wasm $$WASM -- --admin $$ADMIN --base $$BASE --decimals $$DECIMALS --max-age $$MAX_AGE
+deploy: build
+	stellar contract deploy --network $$STELLAR_NETWORK --source $$STELLAR_SOURCE --wasm $$WASM --fee $$FEE -- --admin $$ADMIN --base $$BASE --decimals $$DECIMALS --max-age $$MAX_AGE
 	
